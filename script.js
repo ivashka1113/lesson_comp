@@ -1,6 +1,6 @@
 let lang = prompt("Выберите язык/Choose language (ru/en)");
-let weekDaysRu = "Понедельник\nВторник\nСреда\nЧетверг\nПятница\nСуббота\nВоскресенье";
-let weekDaysEn = "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday";
+const weekDaysRu = "Понедельник\nВторник\nСреда\nЧетверг\nПятница\nСуббота\nВоскресенье";
+const weekDaysEn = "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday";
 const langArr = [];
 
 
