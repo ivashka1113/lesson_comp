@@ -1,19 +1,21 @@
 let lang = prompt("Выберите язык/Choose language (ru/en)");
+let weekDaysRu = "Понедельник\nВторник\nСреда\nЧетверг\nПятница\nСуббота\nВоскресенье";
+let weekDaysEn = "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday";
 const langArr = [];
 
 
 if (lang === "ru") {
-    console.log("Понедельник\nВторник\nСреда\nЧетверг\nПятница\nСуббота\nВоскресенье");
+    console.log(weekDaysRu);
 } else {
-    console.log("Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday");
+    console.log(weekDaysEn);
 }
 
 switch (true) {
     case lang === "ru":
-        console.log("Понедельник\nВторник\nСреда\nЧетверг\nПятница\nСуббота\nВоскресенье");
+        console.log(weekDaysRu);
         break;
     default:
-        console.log("Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday");
+        console.log(weekDaysEn);
         break;
 }
 
