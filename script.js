@@ -1,15 +1,15 @@
 "use strict";
 
-const func = function (arg) {
+const stringReduct = function (str) {
 
     switch (true) {
-        case typeof (arg) === "string":
-            let argTrans = arg
-                .trim();
-            if (argTrans.length >= 30) {
-                console.log(argTrans.substr(0, 29) + "...");
+        case typeof (str) === "string":
+            let strTrans = str.trim();
+
+            if (strTrans.length >= 30) {
+                console.log(strTrans.substr(0, 29) + "...");
             } else {
-                console.log(argTrans);
+                console.log(strTrans);
             }
             break;
 
@@ -19,4 +19,4 @@ const func = function (arg) {
     }
 }
 
-func(prompt("Введите какую-нибудь строку", "Введите какую-нибудь строку"));
+stringReduct(prompt("Введите какую-нибудь строку", "Введите какую-нибудь строку"));
