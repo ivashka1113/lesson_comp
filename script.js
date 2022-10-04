@@ -19,8 +19,8 @@ switch (true) {
         break;
 }
 
-langArr['en'] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-langArr['ru'] = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+langArr['en'] = weekDaysEn.split("\n");
+langArr['ru'] = weekDaysRu.split("\n");
 
 console.log(langArr[lang]);
 
