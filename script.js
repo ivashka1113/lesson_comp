@@ -1,29 +1,22 @@
-let lang = prompt("Выберите язык/Choose language (ru/en)");
-const weekDaysRu = "Понедельник\nВторник\nСреда\nЧетверг\nПятница\nСуббота\nВоскресенье";
-const weekDaysEn = "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday";
-const langArr = [];
+"use strict";
 
+const func = function (arg) {
 
-if (lang === "ru") {
-    console.log(weekDaysRu);
-} else {
-    console.log(weekDaysEn);
+    switch (true) {
+        case typeof (arg) === "string":
+            let argTrans = arg
+                .trim();
+            if (argTrans.length >= 30) {
+                console.log(argTrans.substr(0, 29) + "...");
+            } else {
+                console.log(argTrans);
+            }
+            break;
+
+        default:
+            alert("Вы ввели не строку");
+            break;
+    }
 }
 
-switch (true) {
-    case lang === "ru":
-        console.log(weekDaysRu);
-        break;
-    default:
-        console.log(weekDaysEn);
-        break;
-}
-
-langArr['en'] = weekDaysEn.split("\n");
-langArr['ru'] = weekDaysRu.split("\n");
-
-console.log(langArr[lang]);
-
-let namePerson = prompt("Введите имя (Артём, Александр, др.)");
-
-namePerson === "Артём" ? console.log(namePerson + " - директор") : namePerson === "Александр" ? console.log(namePerson + " - преподаватель") : console.log(namePerson + " - студент");
+func(prompt("Введите какую-нибудь строку", "Введите какую-нибудь строку"));
