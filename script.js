@@ -2,21 +2,19 @@
 
 const stringReduct = function (str) {
 
-    switch (true) {
-        case typeof (str) === "string":
-            let strTrans = str.trim();
-
-            if (strTrans.length >= 30) {
-                console.log(strTrans.substr(0, 29) + "...");
-            } else {
-                console.log(strTrans);
-            }
-            break;
-
-        default:
-            alert("Вы ввели не строку");
-            break;
+    if (typeof (str) !== "string") {
+        alert("Вы ввели не строку");
+        return;
     }
+
+    let strTrans = str.trim();
+
+    if (strTrans.length >= 30) {
+        console.log(strTrans.substring(0, 29) + "...");
+    } else {
+        console.log(strTrans);
+    }
+
 }
 
 stringReduct(prompt("Введите какую-нибудь строку", "Введите какую-нибудь строку"));
