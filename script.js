@@ -15,7 +15,6 @@ const weekList = function (arr) {
             document.writeln(`<p>${key}</p>`);
         }
     }
-
 }
 
 weekList(week);
