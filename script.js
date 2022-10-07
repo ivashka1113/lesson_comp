@@ -7,9 +7,9 @@ let today = week[day];
 const weekList = function (arr) {
     for (let key of arr) {
 
-        if (key == 'Суббота' || key == 'Воскресенье') {
+        if (key === 'Суббота' || key === 'Воскресенье') {
             document.writeln(`<p><i>${key}</i></p>`);
-        } else if (key == today) {
+        } else if (key === today) {
             document.writeln(`<p><b>${key}</b></p>`);
         } else {
             document.writeln(`<p>${key}</p>`);
