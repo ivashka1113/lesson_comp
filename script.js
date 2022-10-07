@@ -1,21 +1,21 @@
 "use strict";
 
-const arr = [224, 299, 405, 508, 604, 701, 788];
+const week = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+let day = new Date().getDay();
+let today = week[day];
 
-for (let i = 0; i < arr.length; i++) {
-    let chr = arr[i].toString()[0];
-    if (chr === '2' || chr === '4') {
-        console.log(arr[i]);
-    }
-}
+const weekList = function (arr) {
+    for (let key of arr) {
 
-for (let i = 1; i < 101; i++) {
-    for (let j = 2; j <= i; j++) {
-        if ((i % j === 0) && (j < i)) {
-            break;
-        } else if (j === i) {
-            console.log(i);
-            break;
+        if (key == 'Суббота' || key == 'Воскресенье') {
+            document.writeln(`<p><i>${key}</i></p>`);
+        } else if (key == today) {
+            document.writeln(`<p><b>${key}</b></p>`);
+        } else {
+            document.writeln(`<p>${key}</p>`);
         }
     }
+
 }
+
+weekList(week);
