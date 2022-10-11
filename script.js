@@ -1,7 +1,7 @@
 "use strict";
 
-const week = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-const year = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+const weekDays = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+const mouths = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
 
 let today;
 let day;
@@ -20,34 +20,17 @@ let today_b;
 function getNewDay() {
     today = new Date();
     day = today.getDay();
-    dayWeek = week[day];
+    dayWeek = weekDays[day];
     dd = String(today.getDate()).padStart(2, '0');
-    mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    mmNum = year[day];
+    mm = String(today.getMonth() + 1).padStart(2, '0');
+    mmNum = mouths[day];
     yyyy = today.getFullYear();
     hr = today.getHours();
     min = today.getMinutes();
     sec = today.getSeconds();
     return;
 }
-// const declen = function () {
 
-//     switch (true) {
-//         case (hr === 1):
-//             hrDeclen = " час ";
-//         case (min === 1):
-//             minDeclen = " минута ";
-//         case (sec === 1):
-//             secDeclen = " секунда ";
-//         case (hr === 2 || hr === 3 || hr === 4):
-//             hrDeclen = " часа ";
-//         case (min === 2 || min === 3 || min === 4):
-//             minDeclen = " минуты ";
-//         case (sec === 2 || sec === 3 || sec === 4):
-//             secDeclen = " секунды ";
-//     }
-//     return today = "Сегодня " + dayWeek + ", " + dd + ' ' + mmNum + ' ' + yyyy + " года, " + hr + hrDeclen + min + minDeclen + sec + secDeclen + "<br \/>";
-// }
 
 function numstr(n, text_forms) {
     var m = Math.abs(n) % 100;
@@ -87,4 +70,4 @@ const timer = function () {
     setTimeout(clearPage, 900);
 }
 
-let timerId_2 = setInterval(timer, 1000);
+let timerId = setInterval(timer, 1000);
