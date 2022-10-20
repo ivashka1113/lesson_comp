@@ -26,6 +26,6 @@ const cityShow = () => {
 const showResult = () => {
     result.textContent = `${countryInput.options[countryInput.selectedIndex].textContent} ${cityInput.value}`;
 }
-
+cityShow();
 countryInput.addEventListener('change', cityShow);
 cityInput.addEventListener('change', showResult);
