@@ -1,57 +1,41 @@
 "use strict";
+const inputA = document.getElementById("a");
+const inputB = document.getElementById("b");
+const sumBtn = document.getElementById("sum");
+const multBtn = document.getElementById("mult");
+const inputRes = document.getElementById("res");
 
+const calculator = {
+    result: 0,
 
-let today;
-let hr;
-let min;
-let sec;
+    sum: () => {
+        console.log("Событие");
+        inputA.value === "" || inputA.value === "" ?
+            alert("Вы ввели не все данные") : this.result = +inputA.value + +inputB.value;
+        calculator.show();
+    },
 
-let options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-}
+    mult: () => {
+        console.log("Событие");
+        inputA.value === "" || inputA.value === "" ?
+            alert("Вы ввели не все данные") : this.result = +inputA.value * +inputB.value;
+        calculator.show();
+    },
 
-function getNewDay() {
-    today = new Date();
-    hr = today.getHours();
-    min = today.getMinutes();
-    sec = today.getSeconds();
-}
+    show: () => {
+        console.log("Событие");
+        inputRes.value = this.result;
+        console.log(this.result);
+        console.log(typeof this.result);
+        if (isNaN(this.result)) alert("Вы ввели не числа");
+        this.result = 0;
+    },
 
-
-function numstr(n, text_forms) {
-    let m = Math.abs(n) % 100;
-    let n1 = m % 10;
-    if (m > 10 && m < 20) {
-        return text_forms[2];
+    start: () => {
+        sumBtn.addEventListener("click", calculator.sum);
+        multBtn.addEventListener("click", calculator.mult);
     }
-    if (n1 > 1 && n1 < 5) {
-        return text_forms[1];
-    }
-    if (n1 === 1) {
-        return text_forms[0];
-    }
-    return text_forms[2];
+
 }
 
-function addZero(num) {
-    if (num.toString().length === 1) num = "0" + num;
-    return num;
-}
-
-const timer = function () {
-
-    getNewDay();
-
-    today = `Сегодня ${today.toLocaleDateString('ru-RU', options)} ${hr} ${numstr(hr, [' час ', ' часа ', ' часов '])}
-     ${min} ${numstr(min, [' минута ', ' минуты ', ' минут '])} ${sec} ${numstr(sec, [' секунда ', ' секунды ', ' секунд '])}
-     <br/> ${today.toLocaleDateString('ru-RU')} - ${addZero(hr)}:${addZero(min)}:${addZero(sec)}`;
-    document.body.innerHTML = today;
-}
-
-
-timer();
-
-setInterval(timer, 1000);
+calculator.start();
