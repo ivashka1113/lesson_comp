@@ -6,10 +6,11 @@ let intervalID;
 
 
 const showText = () => {
-    userOutput.textContent = userInput.value
+    userOutput.textContent = userInput.value;
+    console.log("Функция работает")
 }
 
 userInput.addEventListener("input", () => {
-    clearInterval(intervalID);
-    intervalID = setInterval(showText, 300);
+    clearTimeout(intervalID);
+    intervalID = setTimeout(showText, 300);
 })
