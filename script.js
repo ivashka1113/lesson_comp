@@ -1,57 +1,65 @@
 "use strict";
 
-const man = document.getElementById("man");
-const air = document.getElementById("air");
-const btnFly = document.getElementById("animation");
-const btnDump = document.getElementById("animation_1");
-const btnReset = document.getElementById("reset");
-let countFly = 0;
-let countDump = 0;
-let activeFly = false;
-let activeDump = false;
-let flyTime;
-let flyDumpTime;
+"use strict";
 
+const timer = () => {
 
-const flyAir = () => {
-    countFly++;
-    flyTime = requestAnimationFrame(flyAir);
-    countFly < 400 ? air.style.left = countFly * 4 + "px" : cancelAnimationFrame(flyTime);
+    const text = document.getElementById("text");
+    const newYearDate = "1 January 2023";
+    const week = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+
+    const newDate = () => {
+        let date = new Date();
+        let today = week[date.getDay()];
+        let dayTime;
+        let timeNow = date.toLocaleTimeString("en");
+        let dateStop = new Date(newYearDate);
+        let timeRemaining = dateStop.getTime() - date.getTime();
+        let dayRemining = Math.floor(timeRemaining / 1000 / 60 / 60 / 24);
+
+        switch (true) {
+            case (date.getHours() < 5): {
+                dayTime = "Доброй ночи";
+                break;
+            }
+
+            case (date.getHours() < 12): {
+                dayTime = "Доброе утро";
+                break;
+            }
+
+            case (date.getHours() < 18): {
+                dayTime = "Добрый день";
+                break;
+            }
+
+            case (date.getHours() <= 24): {
+                dayTime = "Добрый вечер";
+                break;
+            }
+        }
+
+        return {
+            dayTime,
+            today,
+            timeNow,
+            dayRemining
+        }
+    }
+
+    const showTime = () => {
+        let time = newDate();
+        text.innerHTML = `${time.dayTime} <br />
+        Сегодня: ${time.today} <br />
+        Текущее время: ${time.timeNow} <br />
+        До нового года осталось ${time.dayRemining} дней`;
+    }
+
+    showTime();
+
+    setInterval(() => {
+        showTime();
+    }, 1000)
 }
 
-btnFly.addEventListener("click", () => {
-    if (activeFly) {
-        cancelAnimationFrame(flyTime);
-        activeFly = !activeFly;
-    } else {
-        flyTime = requestAnimationFrame(flyAir);
-        activeFly = !activeFly;
-    }
-})
-
-const flyDump = () => {
-    countDump++;
-    flyDumpTime = requestAnimationFrame(flyDump);
-    countDump < 450 ? man.style.top = countDump * 2 + "px" : cancelAnimationFrame(flyDumpTime);
-}
-
-btnDump.addEventListener("click", () => {
-    if (activeDump) {
-        cancelAnimationFrame(flyDumpTime);
-        activeDump = !activeDump;
-    } else {
-        flyDumpTime = requestAnimationFrame(flyDump);
-        activeDump = !activeDump;
-    }
-})
-
-btnReset.addEventListener("click", () => {
-    cancelAnimationFrame(flyTime);
-    cancelAnimationFrame(flyDumpTime);
-    countFly = 0;
-    countDump = 0;
-    activeFly = false;
-    activeDump = false;
-    air.style.left = 0;
-    man.style.top = 0;
-})
+timer();
