@@ -6,11 +6,11 @@ const timer = () => {
 
     const text = document.getElementById("text");
     const newYearDate = "1 January 2023";
-    const week = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-
     const newDate = () => {
         let date = new Date();
-        let today = week[date.getDay()];
+        let today = date.toLocaleDateString("ru-Ru", {
+            weekday: "long"
+        })
         let dayTime;
         let timeNow = date.toLocaleTimeString("en");
         let dateStop = new Date(newYearDate);
