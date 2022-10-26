@@ -1,11 +1,8 @@
 "use strict";
 
-"use strict";
-
 const timer = () => {
 
     const text = document.getElementById("text");
-    const newYearDate = "1 January 2023";
     const newDate = () => {
         let date = new Date();
         let today = date.toLocaleDateString("ru-Ru", {
@@ -13,7 +10,7 @@ const timer = () => {
         })
         let dayTime;
         let timeNow = date.toLocaleTimeString("en");
-        let dateStop = new Date(newYearDate);
+        let dateStop = new Date(date.getFullYear() + 1, 0, 1);
         let timeRemaining = dateStop.getTime() - date.getTime();
         let dayRemining = Math.floor(timeRemaining / 1000 / 60 / 60 / 24);
 
