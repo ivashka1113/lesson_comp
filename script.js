@@ -26,7 +26,6 @@ carSelect.addEventListener("change", (data) => {
                 selectedCarInfo.innerHTML = `
                 <p>Тачка: ${car.brand} ${car.model}</p>
                 <p>Цена: ${car.price}$</p>`
-                console.log(carSeletcValue, car.brand)
             } else if (carSeletcValue === "") {
                 selectedCarInfo.innerHTML = "";
             };
