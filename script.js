@@ -8,27 +8,29 @@ const getCars = ({
     data: data
 }) => {
     return fetch(url, {
-        method: "GET",
-        body: data,
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        }
-    }).then(data => data.json())
+            method: "GET",
+            body: data,
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        }).then(data => data.json())
+        .catch(error => console.log(error))
 }
 
 carSelect.addEventListener("change", (data) => {
     const carSeletcValue = carSelect.options[carSelect.selectedIndex].value;
     getCars({
-        url: "./cars.json"
-    }).then(data => {
-        data.cars.forEach(car => {
-            if (carSeletcValue === car.brand) {
-                selectedCarInfo.innerHTML = `
+            url: "./cars.json"
+        }).then(data => {
+            data.cars.forEach(car => {
+                if (carSeletcValue === car.brand) {
+                    selectedCarInfo.innerHTML = `
                 <p>Тачка: ${car.brand} ${car.model}</p>
                 <p>Цена: ${car.price}$</p>`
-            } else if (carSeletcValue === "") {
-                selectedCarInfo.innerHTML = "";
-            };
-        });
-    })
+                } else if (carSeletcValue === "") {
+                    selectedCarInfo.innerHTML = "";
+                };
+            });
+        })
+        .catch(error => console.log(error))
 })
